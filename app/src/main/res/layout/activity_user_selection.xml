@@ -9,7 +9,45 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Continue As......"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/msg"/>
 
-        />
+    <Button
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/msg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="70dp"
+        android:padding="20dp"
+        android:text="Customer"
+        android:id="@+id/btnCustomer"
+        android:backgroundTint="@color/black"
+        tools:targetApi="lollipop"
+        android:textColor="@color/white"/>
+    <Button
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnCustomer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="40dp"
+        android:padding="20dp"
+        android:text="Chef"
+        android:id="@+id/btnChef"
+        android:backgroundTint="@color/black"
+        tools:targetApi="lollipop"
+        android:textColor="@color/white"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
