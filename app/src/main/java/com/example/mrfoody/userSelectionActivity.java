@@ -87,6 +87,9 @@ public class userSelectionActivity extends AppCompatActivity {
                 });
                 builder.setNegativeButton("Noooo",null);
 
+                AlertDialog alert = builder.create();
+                alert.show();
+
 
 
 
@@ -115,6 +118,9 @@ public class userSelectionActivity extends AppCompatActivity {
                     }
                 });
                 builder.setNegativeButton("Noooo",null);
+
+                AlertDialog alert = builder.create();
+                alert.show();
 
                 
 
