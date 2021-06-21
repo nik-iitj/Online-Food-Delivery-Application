@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -49,7 +50,6 @@ public class userSelectionActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
 
-
                     //Toast.makeText(userSelectionActivity.this, "Lite le", Toast.LENGTH_SHORT).show();
 
                 }else{
@@ -63,6 +63,25 @@ public class userSelectionActivity extends AppCompatActivity {
             }
         });
 
+        firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    if(task.getResult().exists()){
+
+                        Intent intent = new Intent(userSelectionActivity.this,addItemActivity.class);
+                        startActivity(intent);
+                    }
+
+
+                }else{
+
+
+
+                }
+
+            }
+        });
 
 
 
@@ -81,11 +100,57 @@ public class userSelectionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         userMap.put("name",account.getDisplayName());
-                        firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).set(userMap);
+                        firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                if(task.isSuccessful()){
+
+                                    AlertDialog.Builder nameBuilder = new AlertDialog.Builder(v.getContext());
+                                    final EditText editText = new EditText(userSelectionActivity.this);
+                                    nameBuilder.setTitle("Name");
+                                    nameBuilder.setMessage("Tell us what we can call you..");
+                                    nameBuilder.setView(editText);
+                                    editText.setText(account.getDisplayName());
+
+                                    nameBuilder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).update("name",editText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(Task<Void> task) {
+                                                    Intent intent = new Intent(userSelectionActivity.this,addItemActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            });
+
+                                        }
+                                    });
+
+                                    nameBuilder.show();
+                                    finish();
+
+
+
+
+
+                                } else{
+
+
+                                    Toast.makeText(userSelectionActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                }
+
+
+
+
+
+                            }
+                        });
 
                     }
                 });
                 builder.setNegativeButton("Noooo",null);
+                builder.show();
 
 
 
@@ -115,8 +180,6 @@ public class userSelectionActivity extends AppCompatActivity {
                     }
                 });
                 builder.setNegativeButton("Noooo",null);
-
-                
 
 
             }
