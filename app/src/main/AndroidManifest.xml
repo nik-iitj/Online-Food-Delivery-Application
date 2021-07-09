@@ -15,7 +15,8 @@
         android:theme="@style/Theme.MrFoody"
         android:requestLegacyExternalStorage="true">
         <activity android:name=".addItemActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"/>
         <activity android:name=".foodListActivity" />
         <activity android:name=".userProfileSetupActivity" />
         <activity

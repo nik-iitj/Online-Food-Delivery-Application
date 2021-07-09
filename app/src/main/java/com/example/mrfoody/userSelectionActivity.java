@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -47,14 +48,28 @@ public class userSelectionActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(userSelectionActivity.this,foodListActivity.class);
                         startActivity(intent);
+                        finish();
                     }
 
 
-                    //Toast.makeText(userSelectionActivity.this, "Lite le", Toast.LENGTH_SHORT).show();
 
-                }else{
 
-                    //userMap.put("name",account.getDisplayName());
+                }
+
+            }
+        });
+
+        firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    if(task.getResult().exists()){
+
+                        Intent intent = new Intent(userSelectionActivity.this,addItemActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
 
 
 
@@ -80,12 +95,46 @@ public class userSelectionActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yup", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        userMap.put("name",account.getDisplayName());
-                        firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).set(userMap);
+
+
+
+                        AlertDialog.Builder nameBuilder = new AlertDialog.Builder(v.getContext());
+                        EditText editText = new EditText(getApplicationContext());
+                        nameBuilder.setMessage("Tell us what we call you");
+                        nameBuilder.setTitle("Enter Your name");
+                        nameBuilder.setView(editText);
+
+                        nameBuilder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String name = editText.getText().toString();
+                                if(!name.isEmpty()){
+                                    userMap.put("name",name);
+                                    firebaseFirestore.collection("chef").document(firebaseAuth.getCurrentUser().getUid()).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(Task<Void> task) {
+                                            Intent intent = new Intent(userSelectionActivity.this,addItemActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+
+                                } else{
+                                    Toast.makeText(userSelectionActivity.this, "can't leave this blank", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+
+                        nameBuilder.show();
+
 
                     }
                 });
                 builder.setNegativeButton("Noooo",null);
+
+                builder.show();
 
 
 
