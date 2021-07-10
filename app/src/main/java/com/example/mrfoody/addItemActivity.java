@@ -109,6 +109,7 @@ public class addItemActivity extends AppCompatActivity {
                     foodMap.put("Time",time.getText().toString());
                     foodMap.put("Price",price.getText().toString());
                     foodMap.put("Chef Name",chef);
+                    foodMap.put("Chef ID",firebaseAuth.getCurrentUser().getUid());
 
                     firebaseFirestore.collection("Food Items").add(foodMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override

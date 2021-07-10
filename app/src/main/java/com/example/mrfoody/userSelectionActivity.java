@@ -46,7 +46,7 @@ public class userSelectionActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     if(task.getResult().exists()){
 
-                        Intent intent = new Intent(userSelectionActivity.this,foodListActivity.class);
+                        Intent intent = new Intent(userSelectionActivity.this,userProfileSetupActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -164,6 +164,8 @@ public class userSelectionActivity extends AppCompatActivity {
                     }
                 });
                 builder.setNegativeButton("Noooo",null);
+
+                builder.show();
 
                 
 
