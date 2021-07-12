@@ -10,14 +10,20 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MrFoody"
-        android:requestLegacyExternalStorage="true">
-        <activity android:name=".addItemActivity"
+        android:theme="@style/Theme.MrFoody">
+        <activity android:name=".IndividualFoodActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true"/>
-        <activity android:name=".foodListActivity" />
+            />
+        <activity
+            android:name=".addItemActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".foodListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".userProfileSetupActivity" />
         <activity
             android:name=".userSelectionActivity"

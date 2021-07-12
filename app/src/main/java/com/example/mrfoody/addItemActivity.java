@@ -104,12 +104,12 @@ public class addItemActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(itemName.getText().toString()) && !TextUtils.isEmpty(itemDes.getText().toString()) &&
                         !TextUtils.isEmpty(time.getText().toString()) && !TextUtils.isEmpty(price.getText().toString()) ){
 
-                    foodMap.put("Item Name",itemName.getText().toString());
-                    foodMap.put("Item Description",itemDes.getText().toString());
+                    foodMap.put("Item_name",itemName.getText().toString());
+                    foodMap.put("Item_description",itemDes.getText().toString());
                     foodMap.put("Time",time.getText().toString());
                     foodMap.put("Price",price.getText().toString());
-                    foodMap.put("Chef Name",chef);
-                    foodMap.put("Chef ID",firebaseAuth.getCurrentUser().getUid());
+                    foodMap.put("Chef_name",chef);
+                    foodMap.put("Chef_ID",firebaseAuth.getCurrentUser().getUid());
 
                     firebaseFirestore.collection("Food Items").add(foodMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
