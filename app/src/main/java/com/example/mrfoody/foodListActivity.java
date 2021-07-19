@@ -1,12 +1,20 @@
 package com.example.mrfoody;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,6 +35,7 @@ public class foodListActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
     FoodRecyclerAdapter foodRecyclerAdapter;
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +75,65 @@ public class foodListActivity extends AppCompatActivity {
         });
 
 
+//        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                int stars = (int) rating;
+//
+//                String message = null;
+//
+//                switch (stars){
+//                    case 1:
+//                        message = "sorry to hear that! :(";
+//                        break;
+//                    case 2:
+//                        message = "Good Enough!";
+//                        break;
+//
+//                    case 3:
+//                        message = "Great! Thank you! :)";
+//                        break;
+//                }
+//                Toast.makeText(foodListActivity.this, message, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.cart:
+                Toast.makeText(this, "cart is clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.Item1:
+                Toast.makeText(this, "Item 1 was clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.Item2:
+                Toast.makeText(this, "Item 2 was clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.Item3:
+                Toast.makeText(this, "Item 3 was clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

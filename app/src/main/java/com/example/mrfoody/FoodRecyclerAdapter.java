@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +59,8 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
             }
         });
 
+        holder.ratingChange();
+
 
 
 
@@ -73,6 +77,7 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
         TextView foodName,price,foodTime;
         ImageView foodImg;
         View fView;
+        RatingBar ratingBar;
 
 
         public ViewHolder( View itemView) {
@@ -109,6 +114,42 @@ public class FoodRecyclerAdapter extends RecyclerView.Adapter<FoodRecyclerAdapte
         public void setImage(String image){
             foodImg = fView.findViewById(R.id.foodImg);
             Glide.with(fView.getContext()).load(image).into(foodImg);
+
+        }
+
+        public void ratingChange(){
+
+            ratingBar = fView.findViewById(R.id.ratingBar);
+            ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                    Toast.makeText(fView.getContext(), Float.toString(rating), Toast.LENGTH_SHORT).show();
+
+                    int stars = (int) rating;
+
+                    String message = null;
+
+                    switch (stars){
+                        case 0:
+                            message = "Unsatisfactory!";
+                            break;
+                        case 1:
+                            message = "sorry to hear that! :(";
+                            break;
+                        case 2:
+                            message = "Good Enough!";
+                            break;
+
+                        case 3:
+                            message = "Great! Thank you! :)";
+                            break;
+                    }
+                    Toast.makeText(fView.getContext(), rating+ " stars, " + message, Toast.LENGTH_SHORT).show();
+
+                    }
+            });
+
+
 
         }
     }

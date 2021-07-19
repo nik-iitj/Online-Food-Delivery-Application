@@ -14,8 +14,11 @@
         android:layout_margin="20dp"
         app:cardCornerRadius="10dp">
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+
             android:layout_height="match_parent">
 
             <ImageView
@@ -73,44 +76,20 @@
                 android:textStyle="italic"
                 android:id="@+id/itemPrice"
                 />
-            <ImageView
+            <RatingBar
+                android:id="@+id/ratingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/outline_star_24"
-                app:layout_constraintLeft_toRightOf="@+id/itemPrice"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintVertical_bias="0.7"
-                app:layout_constraintRight_toRightOf="parent"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/outline_star_24"
-                app:layout_constraintLeft_toRightOf="@+id/itemPrice"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.65"
-                app:layout_constraintVertical_bias="0.7"
-                app:layout_constraintRight_toRightOf="parent"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/outline_star_24"
+                android:numStars="3"
+                android:stepSize="0.5"
+                android:rating="1.5"
                 app:layout_constraintLeft_toRightOf="@+id/itemPrice"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
-                app:layout_constraintVertical_bias="0.7"
+                app:layout_constraintVertical_bias="0.9"
+                android:progressTint="#EC9920"
                 app:layout_constraintRight_toRightOf="parent"
-                />
-
-
-
-
-
+                android:layout_height="wrap_content" />
 
 
 

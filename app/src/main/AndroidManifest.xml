@@ -23,8 +23,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".foodListActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity android:name=".userProfileSetupActivity" />
+
+
+
         <activity
             android:name=".userSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
