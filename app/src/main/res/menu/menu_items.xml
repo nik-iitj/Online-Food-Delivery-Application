@@ -12,7 +12,7 @@
     <item android:title="Item 2"
         android:id="@+id/Item2"
         app:showAsAction="never"/>
-    <item android:title="Item 3"
-        android:id="@+id/Item3"
+    <item android:title="LogOut"
+        android:id="@+id/logout"
         app:showAsAction="never"/>
 </menu>

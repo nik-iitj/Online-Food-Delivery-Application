@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -129,8 +130,14 @@ public class foodListActivity extends AppCompatActivity {
                 Toast.makeText(this, "Item 2 was clicked", Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.Item3:
+            case R.id.logout:
                 Toast.makeText(this, "Item 3 was clicked", Toast.LENGTH_SHORT).show();
+                firebaseAuth.signOut();
+                finish();
+                Intent intent = new Intent(foodListActivity.this,SignInActivity.class);
+                startActivity(intent);
+
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
