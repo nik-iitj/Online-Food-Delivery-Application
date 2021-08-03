@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_image"
+    android:background="@drawable/food3"
     tools:context=".userProfileSetupActivity">
 
 
@@ -14,14 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#16FFFFFF">
+        android:background="#80D5CCCC">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to Ravi Dhabba"
+            android:text="Welcome to the Dhabba"
+            android:fontFamily="cursive"
             android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#B62F2F"
+            android:textStyle="bold"
             android:layout_marginTop="60dp"
-            android:textSize="30sp"/>
+            android:textSize="40sp"/>
 
 
         <ScrollView
@@ -45,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:textColor="#0B3D65"
                     android:text="Please set up order details"
                     android:fontFamily="@font/aclonica"
                     android:textSize="30sp"
